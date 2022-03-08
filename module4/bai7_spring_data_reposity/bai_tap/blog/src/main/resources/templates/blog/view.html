@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<a href="/create">Create new BLog</a>
+<div th:if="${success}">
+  <h1 th:text="${success}" style="color: red;background: aqua"></h1>
+</div>
+<form th:action="@{/findcategory}">
+  <div>
+    <h1>tim kiem </h1>
+  </div>
+  <div>
+    <select name="id">
+      <option value="" selected> Click</option>
+      <option th:each="a:${categoryList}" th:value="${a.getId()}" th:text="${a.getNameCategory()}"></option>
+    </select>
+  </div><span><input type="submit" value="search"></span>
+</form>
+<h1>Blog</h1>
+<table border="1">
+  <tr>
+    <th>Stt</th>
+    <th>Name</th>
+    <th>Tac gia</th>
+    <th>Mota</th>
+    <th>Danh muc</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <th:block th:each="blog: ${blogList}">
+    <tr>
+      <td th:text="${blog.getId()}"></td>
+      <td th:text="${blog.getName()}"></td>
+      <td th:text="${blog.getTacGia()}"></td>
+      <td th:text="${blog.getMota()}"></td>
+      <td th:text="${blog.category.getNameCategory()}"></td>
+      <td><a th:href="@{/edit/{id}(id=${blog.getId()})}">Edit</a></td>
+      <td><a th:href="@{/delete/{id}(id=${blog.getId()})}">Delete</a></td>
+    </tr>
+  </th:block>
+  <a th:href="@{/view(page=${blogList.number} -1)}" th:if="${blogList.hasPrevious()}">Previous</a>
+  <span th:text="${blogList.number} +1"></span>/<span th:text="${blogList.totalPages}"></span>
+  <a th:href="@{/view(page=${blogList.number} +1)}" th:if="${blogList.hasNext()}">Next</a>
+</table>
+</body>
+</html>
