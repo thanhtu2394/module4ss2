@@ -1,15 +1,20 @@
 package com.example.test.service;
 
-import com.example.test.model.Question;
+import com.example.test.model.KhuyenMai;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface QuestionService {
-    Page<Question> findAll(Pageable pageable);
-//    Page<Question> findAll1(Pageable pageable,String name);
-    void save(Question question);
-    void delete(Long id);
-    Question findbyid(Long id);
+import java.util.List;
 
+public interface KhuyenMaiService {
+    List<KhuyenMai> findAll();
+    void save(KhuyenMai khuyenMai);
+    void delete(Long id);
+    KhuyenMai findbyid(Long id);
+    List<KhuyenMai> findAllByMucGiamGiaContaining(Long giamgia);
+    List<KhuyenMai> findAllByTimeStarContaining(String timestar);
+    List<KhuyenMai> findAllByTimeEndContaining(String timeend);
+    List<KhuyenMai> findAllByMucGiamGiaContainingAndAndTimeStarContainingAndTimeEndContaining(Long giamgia,String timestar,String timeend);
+//    List<KhuyenMai> findAllByID(Long typeId);
 
 }

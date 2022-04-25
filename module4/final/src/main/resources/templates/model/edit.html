@@ -2,60 +2,76 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create customer</title>
+    <title>Create question</title>
 </head>
 <body>
-<h1>Edit customer</h1>
-<p>
-    <a href="/customer/">Customer list</a>
-</p>
+<div>
+    <h1>edit question</h1>
+    <p>
+        <a href="/">Question list</a>
+    </p>
 
-<form th:action="@{/customer/edit}" th:object="${customer}" method="post">
-    <table>
-        <tr >
-            <td></td>
-            <td><input type="hidden" th:field="*{idCustomer}"/></td>
-        </tr>
-        <tr>
-            <td> Name:</td>
-            <td><input type="text" th:field="*{nameCustomer}"/></td>
-        </tr>
-        <tr>
-            <td>Birthday</td>
-            <td><input type="text" th:field="*{brithday}"/></td>
-        </tr>
-        <tr>
-            <td>Gender</td>
-            <td>
-                <input th:type="radio" th:field="*{gender}" th:value="true"> Men
-                <input th:type="radio" th:field="*{gender}" th:value="false"> Women
-            </td>
-        </tr>
-        <tr>
-            <td>Card</td>
-            <td><input type="number" th:field="*{idCard}"/></td>
-        </tr>
-        <tr>
-            <td>Phone</td>
-            <td><input type="number" th:field="*{phone}"/></td>
-        </tr>
-        <tr>
-            <td>Addreas</td>
-            <td><input type="text" th:field="*{address}"/></td>
-        </tr>
-        <tr>
-            <td>Type</td>
-            <td>
-                <select th:field="*{customerType}">
-                    <option th:each="in:${customerType}" th:text="${in.getNameType()}" th:value="${in.getIdType()}"></option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Edit Customer"></td>
-        </tr>
-    </table>
-</form>
+    <form th:action="@{/edit}" th:object="${question1}" method="post">
+        <table>
+            <tr>
+                <td> id</td>
+                <td><input type="hidden" th:field="*{id}"/></td>
+                </td>
+            </tr>
+            <tr>
+                <td> tieu de:</td>
+                <td><input type="text" th:field="*{tieuDe}"/></td>
+                            <td th:if="${#fields.hasErrors('tieuDe')}" th:errors="*{tieuDe}" style="color: crimson" >
+                </td>
+            </tr>
+
+            <tr>
+                <td>noi dung</td>
+                <td><input type="text" th:field="*{question}"/></td>
+                            <td th:if="${#fields.hasErrors('question')}" th:errors="*{question}"style="color: crimson">
+                </td>
+            </tr>
+            <tr>
+                <td> answer</td>
+                <td><input type="text" th:field="*{answer}"/></td>
+                <!--            <td th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}" style="color: crimson" >-->
+                </td>
+            </tr>
+            <tr>
+                <td>loai cau hoi</td>
+                <td>
+                    <select th:field="*{typeQuestion}">
+                        <option value="" selected>Click</option>
+                        <option th:each="in:${typeQuestionList}" th:text="${in.getNameType()}" th:value="${in.getIdType()}"></option>
+                    </select>
+                </td>
+                <!--            <td th:if="${#fields.hasErrors('typeQuestion')}" th:errors="*{typeQuestion}"style="color: crimson">-->
+            </tr>
+            <tr>
+                <td> ngay dang</td>
+                <td><input type="text" th:field="*{dateCreate}"/></td>
+                <!--            <td th:if="${#fields.hasErrors('dateCreate')}" th:errors="*{dateCreate}" style="color: crimson" >-->
+                </td>
+            </tr>
+            <tr>
+                <td> status</td>
+                <td><select th:field="*{status}">
+                    <option value="true" >da phan hoi</option>
+                    <option value="false" >cho phan hoi</option>
+
+                </select></td>
+                <!--            <td th:if="${#fields.hasErrors('dateCreate')}" th:errors="*{dateCreate}" style="color: crimson" >-->
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="edit question"> </td>
+
+            </tr>
+        </table>
+    </form>
+    <a href="/"><button type="button">huy</button></a>
+</div>
 </body>
 </html>

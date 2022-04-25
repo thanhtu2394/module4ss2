@@ -2,38 +2,58 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit customer</title>
+    <title>Create customer</title>
 </head>
 <body>
 <h1>Edit customer</h1>
 <p>
-    <a href="/customer/customers">Customer list</a>
+    <a href="/customer/">Customer list</a>
 </p>
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
+
 <form th:action="@{/customer/edit}" th:object="${customer}" method="post">
-    <input th:type="hidden" name="id" th:field="*{id}">
     <table>
-        <tr>
-            <td>First name:</td>
-            <td><input type="text" th:field="*{firstName}"/></td>
+        <tr >
+            <td></td>
+            <td><input type="hidden" th:field="*{idCustomer}"/></td>
         </tr>
         <tr>
-            <td>Last name:</td>
-            <td><input type="text" th:field="*{lastName}"/></td>
+            <td> Name:</td>
+            <td><input type="text" th:field="*{nameCustomer}"/></td>
         </tr>
         <tr>
-            <td>Tinh thanh</td>
+            <td>Birthday</td>
+            <td><input type="text" th:field="*{brithday}"/></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
             <td>
-                <select th:field="*{province}">
-                    <option th:each="province:${provinces}" th:text="${province.name}" th:value="${province.id}"></option>
+                <input th:type="radio" th:field="*{gender}" th:value="true"> Men
+                <input th:type="radio" th:field="*{gender}" th:value="false"> Women
+            </td>
+        </tr>
+        <tr>
+            <td>Card</td>
+            <td><input type="number" th:field="*{idCard}"/></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td><input type="number" th:field="*{phone}"/></td>
+        </tr>
+        <tr>
+            <td>Addreas</td>
+            <td><input type="text" th:field="*{address}"/></td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>
+                <select th:field="*{customerType}">
+                    <option th:each="in:${customerType}" th:text="${in.getNameType()}" th:value="${in.getIdType()}"></option>
                 </select>
             </td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Update customer"></td>
+            <td><input type="submit" value="Edit Customer"></td>
         </tr>
     </table>
 </form>
