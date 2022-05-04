@@ -1,0 +1,11 @@
+<p>calculator works!</p>
+<input type="number" #n1>
+<select #dau>
+  <option value="+">+</option>
+  <option value="-">-</option>
+  <option value="*">*</option>
+  <option value="/">/</option>
+</select>
+<input type="number" #n2>
+<button type="button" (click)="tinhtoan (dau.value, n1.value, n2.value)"> = </button>
+<h1>Result : {{total}}</h1>

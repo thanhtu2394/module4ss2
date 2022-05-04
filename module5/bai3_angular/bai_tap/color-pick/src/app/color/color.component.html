@@ -1,0 +1,9 @@
+<p>color works!</p>
+<div >
+<input type="radio" #n1 value="1" name="a"><span style="color: red">RED</span>
+<input type="radio" #n2 value="2" name="a"><span style="color: yellow">yellow</span>
+<input type="radio" #n3 value="3"  name="a"><span style="color: blue">blue</span>
+<input type="radio" #n4 value="4"  name="a"><span style="color: black">none</span>
+</div>
+<button (click)="color2(n1.value)"> convert</button>
+<h1 [style.color]="color1">cuoc doi la nhung niem vui</h1>
