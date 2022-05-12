@@ -1,0 +1,45 @@
+<p>Register</p>
+<div class="container">
+<div class="col-3">
+<form [formGroup]="register" (ngSubmit)="submit()">
+  <label class="form-label">Email</label>
+  <input class="form-control" formControlName="Email" >
+  <div *ngIf="register.get('Email').invalid&&register.get('Email').touched">
+eror
+  </div>
+  <fieldset formGroupName="Psw">
+    <label class="form-label">Password</label>
+    <input class="form-control" formControlName="Password">
+    <div *ngIf="register.get('Psw').get('Password').invalid&&register.get('Psw').get('Password').touched">
+      eror
+    </div>
+    <label class="form-label">ConfirmPW</label>
+    <input class="form-control" formControlName="ConfirmPW">
+    <div *ngIf="register.get('Psw').get('ConfirmPW').invalid&&register.get('Psw').get('ConfirmPW').touched">
+      eror
+    </div>
+    <div class="alert alert-danger" role = " alert "
+         *ngIf="register.hasError('passwordnotmatch',
+['Psw']) && register.get('Psw').touched " >
+      Password does not match!
+    </div>
+
+  </fieldset>
+
+
+<!--  <label class="form-label">Password</label>-->
+<!--  <input class="form-control" formControlName="Password">-->
+<!--  <label class="form-label">ConfirmPW</label>-->
+<!--  <input class="form-control" formControlName="ConfirmPW">-->
+  <label class="form-label">Country</label>
+  <input class="form-control" formControlName="Country">
+  <label class="form-label">Age</label>
+  <input class="form-control" formControlName="Age">
+  <label class="form-label">Gender</label>
+  <input class="form-control" formControlName="Gender">
+  <label class="form-label">Phone</label>
+  <input class="form-control" formControlName="Phone">
+  <input type="submit" value="submit">
+</form>
+</div>
+</div>

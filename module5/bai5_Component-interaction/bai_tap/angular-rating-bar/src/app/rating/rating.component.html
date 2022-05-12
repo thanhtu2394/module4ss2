@@ -1,0 +1,6 @@
+<p>RATING BAR</p>
+
+<h6>{{showIndex1}}</h6>
+<div>
+  <button *ngFor="let index of array;let i = index " (click)="showIndex(index)" [ngStyle]="{backgroundColor:getColor(i)}" >{{index}}</button>
+</div>
